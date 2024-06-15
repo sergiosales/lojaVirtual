@@ -3,12 +3,11 @@ package com.sales.lojavirtual.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pessoa_juridica")
-@PrimaryKeyJoinColumn(name = "id")
+
 @Embeddable
 public class PessoaJuridica extends Pessoa {
 	
