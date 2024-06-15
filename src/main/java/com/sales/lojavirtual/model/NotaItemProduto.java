@@ -12,19 +12,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 
 @Entity
 @Table(name = "nota_item_produto")
-@SequenceGenerator(name = "seq_nota_item_produto",sequenceName ="seq_nota_item_produtoa",initialValue = 1,allocationSize = 1 )
 public class NotaItemProduto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "seq_nota_item_produto")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false)

@@ -9,36 +9,54 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "produtos")
-@SequenceGenerator(name = "seq_produtos",sequenceName ="seq_produtos",allocationSize = 1,initialValue = 1 )
 public class Produto  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator ="seq_produtos")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String tipoUnidade;
+	
+	@Column(nullable = false)
 	private String nome;
 	
 	@Column(columnDefinition ="text",length = 2000)
 	private String descricao;
 	
+	@Column(nullable = false)
 	private Double peso;
+	
+	@Column(nullable = false)
 	private Double largura;
+	
+	@Column(nullable = false)
 	private Double altura;
+	
+	@Column(nullable = false)
 	private Double profundidade;
+	
+	@Column(nullable = false)
 	private BigDecimal valorVenda= BigDecimal.ZERO;
+	
+	@Column(nullable = false)
 	private Integer qtdEstoque =0;
+	
 	private Integer qtAlertaEStoque= 0;
+	
 	private String linkYoutube;
+	
 	private Boolean alertaQtdEstoque = Boolean.FALSE;
+	
 	private Integer qtdClique=0;
+	
+	@Column(nullable = false)
 	private Boolean ativo = Boolean.TRUE;
 	
 	

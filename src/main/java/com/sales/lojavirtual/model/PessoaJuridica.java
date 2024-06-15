@@ -1,24 +1,33 @@
 package com.sales.lojavirtual.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pessoa_juridica")
+@PrimaryKeyJoinColumn(name = "id")
 @Embeddable
 public class PessoaJuridica extends Pessoa {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Column(nullable = false)
 	private String cnpj;
+	
+	@Column(nullable = false)
 	private String insEstadual;
+	
 	private String insMunicipal;
+	
+	@Column(nullable = false)
 	private String nomeFantasia;
-	private String razaoSocial;
-	private String categoria;
+	
+	@Column(nullable = false)
+	private String razaoSocial;	
+
 	
 	public String getCnpj() {
 		return cnpj;
@@ -49,12 +58,6 @@ public class PessoaJuridica extends Pessoa {
 	}
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
-	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
 	}
 	
 	

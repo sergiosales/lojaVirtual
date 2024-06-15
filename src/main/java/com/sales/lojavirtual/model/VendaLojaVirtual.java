@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -14,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -22,14 +22,13 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "venda_loja_virtual")
-@SequenceGenerator(name = "seq_venda_loja_virtual",sequenceName ="seq_venda_loja_virtual",initialValue = 1,allocationSize = 1 )
 public class VendaLojaVirtual implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "seq_venda_loja_virtual")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@ManyToOne(targetEntity = Pessoa.class)
@@ -47,6 +46,7 @@ public class VendaLojaVirtual implements Serializable {
 	foreignKey = @ForeignKey(value =ConstraintMode.CONSTRAINT,name = "endereco_compra_fk" ))
 	private Endereco enderecoCompra;
 	
+	@Column(nullable = false)
 	private BigDecimal valorTotal;
 	
 	private BigDecimal valorDesconto;
@@ -58,7 +58,7 @@ public class VendaLojaVirtual implements Serializable {
 	
 	
 	@OneToOne()
-	@JoinColumn(name = "nota_fiscal_venda_id",nullable = false,
+	@JoinColumn(name = "nota_fiscal_venda_id",
 	foreignKey = @ForeignKey(value =ConstraintMode.CONSTRAINT,name = "nota_fiscal_venda_fk" ))
 	private NotaFiscalVenda notaFiscalVenda;
 	
@@ -67,13 +67,17 @@ public class VendaLojaVirtual implements Serializable {
 	foreignKey = @ForeignKey(value =ConstraintMode.CONSTRAINT,name = "cupom_desconto_fk" ))
 	private CupomDesconto cupomDesconto;
 	
+	@Column(nullable = false)
 	private BigDecimal valorFrete;
 	
+	@Column(nullable = false)
 	private Integer diaEntrega;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataVenda;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataEntrega;
 

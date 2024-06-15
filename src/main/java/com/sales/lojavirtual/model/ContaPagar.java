@@ -6,12 +6,10 @@ import java.util.Date;
 import java.util.Objects;
 
 import com.sales.lojavirtual.enums.StatusContaPagar;
-import com.sales.lojavirtual.enums.StatusContaReceber;
-import com.sales.lojavirtual.enums.TipoEndereco;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +17,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -30,27 +27,30 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "conta_pagar")
-@SequenceGenerator(name = "seq_conta_pagar",sequenceName ="seq_conta_pagar",allocationSize = 1,initialValue = 1 )
 public class ContaPagar implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "seq_conta_pagar")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String descricao;
 	
 	@Enumerated 
+	@Column(nullable = false)
 	private StatusContaPagar status;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
 	private Date dtVencimento;
 	
 	@Temporal(TemporalType.DATE)
 	private Date dtPagamento;
 	
+	@Column(nullable = false)
 	private BigDecimal valorTotal;
 	
 	private BigDecimal valorDesconto;	

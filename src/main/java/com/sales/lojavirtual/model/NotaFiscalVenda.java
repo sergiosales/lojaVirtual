@@ -12,27 +12,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "nota_fiscal_venda")
-@SequenceGenerator(name = "seq_nota_fiscal_venda",sequenceName ="seq_nota_fiscal_venda",initialValue = 1,allocationSize = 1 )
 public class NotaFiscalVenda implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator ="seq_nota_fiscal_venda")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String numero;
+	
+	@Column(nullable = false)
 	private String serie;
+	
+	@Column(nullable = false)
 	private String tipo;
-	@Column(columnDefinition = "text")
+	
+	@Column(columnDefinition = "text",nullable = false)
 	private String xml;
-	@Column(columnDefinition = "text")
+	
+	@Column(columnDefinition = "text",nullable = false)
 	private String pdf;
 	
 	@OneToOne()

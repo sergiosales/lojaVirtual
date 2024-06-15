@@ -3,6 +3,7 @@ package com.sales.lojavirtual.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -11,22 +12,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 @Entity
 @Table(name = "imagem_produtos")
-@SequenceGenerator(name = "seq_imgprodutos",sequenceName ="seq_imgprodutos",initialValue = 1,allocationSize = 1 )
 public class ImagemProduto implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator ="seq_imgprodutos" )
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long id;
 	
+	@Column(columnDefinition = "text", nullable = false)
 	private String imagemOriginal;
 	
+	@Column(columnDefinition = "text", nullable = false)
 	private String imagemMiniaturar;
 	
 	@ManyToOne
