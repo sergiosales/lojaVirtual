@@ -27,7 +27,7 @@ public class LojavirtualApplicationTests extends TestCase {
 	
 		acesso = controller.salvar(acesso).getBody();
 		
-		assertEquals(true, acesso.getId()< 0);
+		assertEquals(true, acesso.getId() >0);
 		
 
 	}
